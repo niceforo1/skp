@@ -1,0 +1,11 @@
+.breadcrumb-height {
+  height: 40px !important;
+  line-height: 37px;
+}
+.breadcrumb {
+  font-size: 12px;
+}
+.breadcrumb-hr {
+  margin-top: -0.5px;
+  margin-bottom: -0.5px;
+}

@@ -4,6 +4,15 @@ module.exports = (app, mongoose) => {
     res.send('Las rutas funcionan correctamente');
   });
 
+  app.get('/api/pacientes', async (req, res) => {
+    const pacientes = await Paciente.find();
+    try {
+      res.send(pacientes);
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  });
+
   app.post('/api/pacientes', async (req, res) => {
     try {
       const {
