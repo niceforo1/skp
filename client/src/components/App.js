@@ -4,7 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './shared/Header';
 import Landing from './Landing';
 import LandingPacientes from './pacientes/Landing';
-import AgregarPaciente from './pacientes/AgregarPaciente';
+import AddPatient from './pacientes/AddPatient';
 
 class App extends Component {
   render() {
@@ -15,11 +15,7 @@ class App extends Component {
             <Header />
             <Route exact path="/" component={Landing} />
             <Route exact path="/pacientes" component={LandingPacientes} />
-            <Route
-              exact
-              path="/pacientes/agregar"
-              component={AgregarPaciente}
-            />
+            <Route exact path="/pacientes/agregar" component={AddPatient} />
           </div>
         </BrowserRouter>
       </div>
