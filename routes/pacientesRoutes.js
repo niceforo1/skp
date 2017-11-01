@@ -17,16 +17,16 @@ module.exports = (app, mongoose) => {
 	app.post('/api/pacientes', async (req, res) => {
 		try {
 			const {
-				nroDocumento,
-				nombre,
 				apellido,
-				fechaNacimiento,
-				telefono,
 				celular,
+				fechaNacimiento,
 				mail,
-				direccion,
+				nombre,
+				nroDocumento,
+				obraSocial,
 				sexo,
-				obraSocial
+				telefono,
+				direccion
 			} = req.body;
 
 			const paciente = await new Paciente({
@@ -40,10 +40,11 @@ module.exports = (app, mongoose) => {
 				direccion,
 				sexo,
 				obraSocial
-			}).save();
-
-			res.send(`Paciente generado: ${paciente}`);
+			});
+			await paciente.save();
+			res.send(paciente);
 		} catch (err) {
+			console.log(err);
 			res.status(500).send(err);
 		}
 	});

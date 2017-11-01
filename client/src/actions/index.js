@@ -12,6 +12,9 @@ export const deletePacientes = id => async dispatch => {
 	dispatch({type: FETCH_PACIENTE, payload: res.data});
 };
 
-export const savePacientes = paciente => dispatch => {
-	console.log('paciente: ', paciente);
+export const savePacientes = (paciente, history) => async dispatch => {
+	const res = await axios.post(`/api/pacientes`, paciente);
+	history.push('/pacientes');
+	console.log(res);
+	dispatch({type: FETCH_PACIENTE, payload: res.data});
 };

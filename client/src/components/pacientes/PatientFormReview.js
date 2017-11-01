@@ -3,8 +3,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import patientFormFields from './patientFormFields';
+import * as actions from '../../actions';
 
-const PatientFormReview = ({onCancel, onSubmit, formValues, history}) => {
+const PatientFormReview = ({onCancel, formValues, savePacientes, history}) => {
 	const reviewFields = _.map(patientFormFields, ({name, label}) => {
 		return (
 			<div key={name}>
@@ -25,7 +26,7 @@ const PatientFormReview = ({onCancel, onSubmit, formValues, history}) => {
 			</button>
 			<button
 				className="green white-text btn-flat waves-effect waves-light right"
-				onClick={() => onSubmit(formValues)}
+				onClick={() => savePacientes(formValues, history)}
 			>
 				Finalizar
 				<i className="material-icons right">email</i>
@@ -36,4 +37,4 @@ const PatientFormReview = ({onCancel, onSubmit, formValues, history}) => {
 function mapStateToProps(state) {
 	return {formValues: state.form.patientForm.values};
 }
-export default connect(mapStateToProps)(withRouter(PatientFormReview));
+export default connect(mapStateToProps, actions)(withRouter(PatientFormReview));

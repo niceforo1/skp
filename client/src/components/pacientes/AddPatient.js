@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import {reduxForm} from 'redux-form';
-import {connect} from 'react-redux';
 import PatientForm from './PatientForm';
 import PatientFormReview from './PatientFormReview';
 import Breadcrumb from '../shared/Breadcrumbs';
-import {savePacientes} from '../../actions';
 
 class AddPatient extends Component {
 	state = {showPatientReview: false};
@@ -14,9 +12,6 @@ class AddPatient extends Component {
 			return (
 				<PatientFormReview
 					onCancel={() => this.setState({showPatientReview: false})}
-					onSubmit={paciente => {
-						this.props.savePacientes(paciente);
-					}}
 				/>
 			);
 		}
@@ -33,7 +28,6 @@ class AddPatient extends Component {
 		return <div>{this.renderContent()}</div>;
 	}
 }
-AddPatient = connect(null, {savePacientes})(AddPatient);
 
 export default reduxForm({
 	form: 'patientForm'
